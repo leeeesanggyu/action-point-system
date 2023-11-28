@@ -1,3 +1,5 @@
 rootProject.name = 'action-point'
+
 include ':action'
 include ':point'
+include ':publish'
