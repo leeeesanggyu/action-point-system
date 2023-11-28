@@ -1,11 +1,10 @@
 package com.example.publish.publish;
 
+import com.example.core.kafka.dto.KafkaDataDto;
 import com.example.publish.kafka.KafkaProducer;
-import com.example.publish.kafka.TopicType;
 import lombok.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,10 +14,10 @@ public class PublishController {
     private final KafkaProducer kafkaProducer;
 
     @PostMapping("/publish")
-    public PublishDto publish(
-            @RequestBody PublishDto publishDto
+    public KafkaDataDto publish(
+            @RequestBody KafkaDataDto kafkaDataDto
     ) {
-        kafkaProducer.sendMessage(publishDto);
-        return publishDto;
+        kafkaProducer.sendMessage(kafkaDataDto);
+        return kafkaDataDto;
     }
 }

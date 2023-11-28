@@ -1,21 +1,17 @@
-package com.example.publish.publish;
+package com.example.core.kafka.dto;
 
-import com.example.publish.kafka.TopicType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
-public class PublishDto {
+public class KafkaDataDto {
 
     private TopicType topicType;
     private ActionType actionType;
     private Long userId;
 
     @Builder
-    private PublishDto(TopicType topicType, ActionType actionType, Long userId) {
+    private KafkaDataDto(TopicType topicType, ActionType actionType, Long userId) {
         this.topicType = topicType;
         this.actionType = actionType;
         this.userId = userId;
@@ -25,9 +21,10 @@ public class PublishDto {
         return new Content(actionType, userId);
     }
 
+    @ToString
     @Getter
     @AllArgsConstructor
-    static class Content {
+    public static class Content {
         private ActionType actionType;
         private Long userId;
     }

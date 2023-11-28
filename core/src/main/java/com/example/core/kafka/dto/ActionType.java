@@ -1,4 +1,4 @@
-package com.example.publish.publish;
+package com.example.core.kafka.dto;
 
 import lombok.Getter;
 
