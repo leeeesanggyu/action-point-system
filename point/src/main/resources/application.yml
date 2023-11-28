@@ -1,0 +1,10 @@
+logging:
+  level:
+    org:
+      hibernate: info
+#  config: classpath:logback.xml
+
+spring:
+  profiles:
+    include:
+      - db
