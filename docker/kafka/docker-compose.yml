@@ -16,5 +16,14 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
+# get topic list
+# kafka-topics.sh --list --bootstrap-server localhost:9092
+
+# create topic
+# kafka-topics.sh --create --topic event_topic --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1
+
+# publish topic
 # bin/kafka-console-producer.sh --broker-list localhost:9092 --topic action_topic
-# kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic action_topic --from-beginning
+
+# subscribe topic
+# kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic event_topic --from-beginning

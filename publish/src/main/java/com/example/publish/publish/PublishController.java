@@ -18,7 +18,7 @@ public class PublishController {
     public PublishDto publish(
             @RequestBody PublishDto publishDto
     ) {
-        kafkaProducer.sendMessage(TopicType.ACTION, publishDto);
+        kafkaProducer.sendMessage(publishDto);
         return publishDto;
     }
 }

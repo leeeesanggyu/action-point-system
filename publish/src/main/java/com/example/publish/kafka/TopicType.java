@@ -6,7 +6,8 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum TopicType {
-    ACTION("action_topic")
+    ACTION("action_topic"),
+    EVENT("event_topic")
     ;
 
     private final String topicName;

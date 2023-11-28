@@ -1,5 +1,6 @@
 package com.example.publish.kafka;
 
+import com.example.publish.publish.PublishDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +14,13 @@ public class KafkaProducer {
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final ObjectMapper mapper;
 
-    public <T> void sendMessage (TopicType topicType, T message){
+    public void sendMessage (PublishDto publishDto){
         String messageJson = null;
         try {
-            messageJson = mapper.writeValueAsString(message);
+            messageJson = mapper.writeValueAsString(publishDto.toContent());
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        kafkaTemplate.send(topicType.getTopicName(), messageJson);
+        kafkaTemplate.send(publishDto.getTopicType().getTopicName(), messageJson);
     }
 }

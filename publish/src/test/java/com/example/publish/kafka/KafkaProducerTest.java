@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static com.example.publish.kafka.TopicType.ACTION;
+import static com.example.publish.kafka.TopicType.EVENT;
 import static com.example.publish.publish.ActionType.PAYMENT_SUCCESS;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,9 +20,10 @@ class KafkaProducerTest {
     @Test
     void sendMessage() {
         PublishDto publishDto = PublishDto.builder()
+                .topicType(EVENT)
                 .actionType(PAYMENT_SUCCESS)
                 .userId(1L)
                 .build();
-        kafkaProducer.sendMessage(TopicType.ACTION, publishDto);
+        kafkaProducer.sendMessage(publishDto);
     }
 }
